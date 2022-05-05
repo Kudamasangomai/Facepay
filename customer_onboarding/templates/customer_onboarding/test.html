@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>POS System face registration</title>
+{% endblock %}
+
+{% block content %}
+<h3 class="text-center">Customer Facial Account Registration</h3>
+    <div class="card-deck">
+        <div class="container">
+            <br/>
+            <form action = "/create_dataset" method = "post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <ul>
+                        <li>For higher accuracy, make sure to stay in room with good lightning.</li>
+                        <li>Please remove any type of accesories from face.</li>
+                        <li>Make sure your face in clearly visible in camera.</li>
+                        <li>Make sure your hair is not blocking the face.</li>
+                        <li>Make sure no other faces are within the cam frame.
+                    </ul>
+                    <input type="text" class="form-control" name="user_Id" id="inputId" value={{userId}} placeholder="Enter Id" readonly>
+                    <br>
+                    <button type="submit" class="btn btn-warning">Add Face</button>
+                    <hr/>
+                </div>
+            </form>  
+        <div>
+    </div>
+</div>
+{% endblock %}
+
+  {% comment %} <form action="/create_dataset" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="inputId">Enter Unique ID*</label>
+                    <input type="text" class="form-control" name="userId" id="inputId" placeholder="Enter Id">
+                </div> 
+                <button type="submit" class="btn btn-warning">Add Face</button>
+                {% comment %} </form> {% endcomment %}
+            
